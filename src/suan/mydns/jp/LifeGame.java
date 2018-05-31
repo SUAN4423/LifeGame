@@ -11,7 +11,7 @@ public class LifeGame extends PApplet
 	public int[][][] stage;
 	Random R = new Random();
 	public int now = 0;
-	public static int[] T = {800, 800, 50, 50};
+	public static int[] T = {800, 800, 50, 50, 100};
 	public boolean loop = false;
 
 	public static void main(String[] args)
@@ -19,7 +19,7 @@ public class LifeGame extends PApplet
 		// TODO 自動生成されたメソッド・スタブ
 		try
 		{
-			for(int i = 0; i < 4; i++)
+			for(int i = 0; i < T.length; i++)
 			{
 				T[i] = Integer.parseInt(args[i]);
 			}
@@ -61,7 +61,7 @@ public class LifeGame extends PApplet
 			stage[B][C][2] = 1;
 		}
 		Timer T2 = new Timer();
-		T2.scheduleAtFixedRate(new RenderTask(), 0, 100);
+		T2.scheduleAtFixedRate(new RenderTask(), 0, T[4]);
 	}
 
 	class RenderTask extends TimerTask
