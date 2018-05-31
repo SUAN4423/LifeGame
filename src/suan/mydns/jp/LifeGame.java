@@ -12,6 +12,7 @@ public class LifeGame extends PApplet
 	Random R = new Random();
 	public int now = 0;
 	public static int[] T = {800, 800, 50, 50};
+	public boolean loop = false;
 
 	public static void main(String[] args)
 	{
@@ -87,6 +88,31 @@ public class LifeGame extends PApplet
 								}
 								catch(Exception e)
 								{
+									if(loop)
+									{
+										if(i+k >= stage.length || i+k <= -1)
+										{
+											if(j+l >= stage[0].length || j+l <= -1)
+											{
+												if(stage[stage.length-Math.abs(i+k)][stage[0].length-Math.abs(j+l)][now] == 1) N++;
+											}
+											else
+											{
+												if(stage[stage.length-Math.abs(i+k)][j+l][now] == 1) N++;
+											}
+										}
+										else
+										{
+											if(j+l >= stage[0].length || j+l <= -1)
+											{
+												if(stage[i+k][stage[0].length-Math.abs(j+l)][now] == 1) N++;
+											}
+											else
+											{
+												if(stage[i+k][j+l][now] == 1) N++;
+											}
+										}
+									}
 								}
 							}
 						}
@@ -194,6 +220,10 @@ public class LifeGame extends PApplet
 				stage[B][C][2] = 1;
 			}
 			now = 0;
+		}
+		else if(key == 'l')
+		{
+			loop = !loop;
 		}
 	}
 }
